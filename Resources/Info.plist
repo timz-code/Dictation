@@ -5,9 +5,10 @@
     <key>CFBundleIdentifier</key><string>local.tim.Dictation</string>
     <key>CFBundleName</key><string>Dictation</string>
     <key>CFBundleDisplayName</key><string>Dictation</string>
+    <key>CFBundleIconFile</key><string>AppIcon.icns</string>
     <key>CFBundlePackageType</key><string>APPL</string>
-    <key>CFBundleShortVersionString</key><string>0.4.0</string>
-    <key>CFBundleVersion</key><string>10</string>
+    <key>CFBundleShortVersionString</key><string>0.4.1</string>
+    <key>CFBundleVersion</key><string>11</string>
     <key>CFBundleDevelopmentRegion</key><string>en</string>
     <key>CFBundleLocalizations</key><array><string>en</string><string>ru</string></array>
     <key>LSMinimumSystemVersion</key><string>14.0</string>
