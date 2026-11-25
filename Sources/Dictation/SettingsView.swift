@@ -153,7 +153,14 @@ struct SettingsView: View {
             }
             Spacer()
             if granted { Image(systemName: "checkmark.circle.fill").font(.system(size: 20)).foregroundStyle(accent) }
-            else { Button(model.text("permission.allow"), action: action).controlSize(.small).tint(accent) }
+            else {
+                Button(action: action) {
+                    Text(model.text("permission.allow"))
+                        .font(.system(size: 14, weight: .semibold))
+                        .frame(minWidth: 78, minHeight: 24)
+                }
+                .buttonStyle(.bordered).controlSize(.large).tint(accent).fixedSize()
+            }
         }.padding(.vertical, 18)
     }
 
