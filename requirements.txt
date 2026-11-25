@@ -1,0 +1,9 @@
+# Tested local inference environment. Install separately; Dictation never runs pip.
+# Apple GPU requires a CTranslate2 build with the experimental MPS backend.
+faster-whisper==1.2.1
+ctranslate2==4.9.1
+onnxruntime==1.19.2
+numpy==2.0.2
+av==15.1.0
+tokenizers==0.22.2
+huggingface-hub==1.8.0
