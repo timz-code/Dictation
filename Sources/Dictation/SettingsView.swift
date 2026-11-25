@@ -40,20 +40,20 @@ struct SettingsView: View {
 
                 VStack(spacing: 0) {
                     permission(model.text("permission.microphone"), subtitle: model.text("permission.microphone.detail"), icon: "mic", granted: model.microphoneAllowed, action: model.requestMicrophone)
-                    Divider().overlay(.white.opacity(0.05)).padding(.leading, 47)
+                    Divider().overlay(.white.opacity(0.05)).padding(.leading, 44)
                     permission(model.text("permission.accessibility"), subtitle: model.text("permission.accessibility.detail"), icon: "keyboard", granted: model.accessibilityAllowed, action: model.requestAccessibility)
-                    Divider().overlay(.white.opacity(0.05)).padding(.leading, 47)
+                    Divider().overlay(.white.opacity(0.05)).padding(.leading, 44)
                     HStack(spacing: 14) {
-                        Image(systemName: "cpu").frame(width: 24).foregroundStyle(accent)
+                        Image(systemName: "cpu").font(.system(size: 22, weight: .medium)).frame(width: 30).foregroundStyle(accent)
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(model.text("model.local")).font(.system(size: 12, weight: .semibold))
+                            Text(model.text("model.local")).font(.system(size: 16, weight: .semibold))
                             Text(model.modelReady ? model.backendDescription : model.modelLoading ? model.text("model.warming") : model.text("model.setup"))
                                 .font(.system(size: 11)).foregroundStyle(.white.opacity(0.45))
                         }
                         Spacer()
-                        if model.modelLoading { ProgressView().controlSize(.small) }
-                        else { Image(systemName: model.modelReady ? "checkmark.circle.fill" : "exclamationmark.circle").foregroundStyle(model.modelReady ? accent : .orange) }
-                    }.padding(.vertical, 15)
+                        if model.modelLoading { ProgressView().controlSize(.regular).frame(width: 22, height: 22) }
+                        else { Image(systemName: model.modelReady ? "checkmark.circle.fill" : "exclamationmark.circle").font(.system(size: 20)).foregroundStyle(model.modelReady ? accent : .orange) }
+                    }.padding(.vertical, 18)
                 }
 
                 if model.phase == .error {
@@ -146,15 +146,15 @@ struct SettingsView: View {
 
     private func permission(_ title: String, subtitle: String, icon: String, granted: Bool, action: @escaping () -> Void) -> some View {
         HStack(spacing: 14) {
-            Image(systemName: icon).frame(width: 24).foregroundStyle(accent)
+            Image(systemName: icon).font(.system(size: 22, weight: .medium)).frame(width: 30).foregroundStyle(accent)
             VStack(alignment: .leading, spacing: 4) {
-                Text(title).font(.system(size: 12, weight: .semibold))
+                Text(title).font(.system(size: 16, weight: .semibold))
                 Text(subtitle).font(.system(size: 11)).foregroundStyle(.white.opacity(0.45))
             }
             Spacer()
-            if granted { Image(systemName: "checkmark.circle.fill").foregroundStyle(accent) }
+            if granted { Image(systemName: "checkmark.circle.fill").font(.system(size: 20)).foregroundStyle(accent) }
             else { Button(model.text("permission.allow"), action: action).controlSize(.small).tint(accent) }
-        }.padding(.vertical, 15)
+        }.padding(.vertical, 18)
     }
 
     private func pathField(_ label: String, text: Binding<String>) -> some View {
