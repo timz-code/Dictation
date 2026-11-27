@@ -64,7 +64,7 @@ If Globe switches input languages or opens system dictation, set **Keyboard → 
 | Device | Apple GPU (Metal/MPS, FP16) or CPU (INT8). A change reloads the worker automatically. The UI shows the actual device reported by the engine. |
 | Recognition mode | Fast (`beam_size=1`) or Accurate (`beam_size=5`). This changes search effort, not model size. A change reloads the worker automatically. |
 | Python / model paths | Click **Restart model** after editing paths. |
-| Outro filter | Removes the specific unwanted Russian “subscribe to our channel…” phrase described below. Enabled by default. |
+| Outro filter | Removes the known unwanted Russian “subscribe to our channel…” endings described below. Enabled by default. |
 
 The in-app language selector translates the menu, settings, indicator and application error messages without restarting Whisper. macOS permission dialogs follow the system/app language selected by macOS. Raw third-party error details retain their original language.
 
@@ -82,9 +82,11 @@ The GPU worker warms up Metal before reporting readiness and keeps the model res
 - The original clipboard is restored after one second if nobody has changed it. Rapid successive dictations share the original restoration snapshot. A newer clipboard change is preserved.
 - **Text sent** means that ⌘V was sent to the target process, not that the recipient confirmed insertion. It disappears after 0.8 seconds. The last phrase remains available to copy.
 
-The optional outro filter removes this complete phrase only at the end of a result:
+The optional outro filter removes either of these complete phrases only at the end of a result:
 
 > Подписывайтесь на наш канал, ставьте лайки и подписывайтесь на наш канал.
+
+> Подписывайтесь на наш канал, ставьте лайки и пишите комментарии.
 
 It tolerates case, punctuation and repeated endings, keeps shorter similar phrases and occurrences inside the body, and inserts nothing if cleanup leaves an empty result. Disable it when intentionally dictating this exact ending. It is a narrow cleanup rule, not a general hallucination detector.
 

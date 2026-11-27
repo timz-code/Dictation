@@ -1,11 +1,11 @@
 import Foundation
 
 public enum TranscriptCleanup {
-    // Deliberately narrow: only the reported full phrase at the very end.
+    // Deliberately narrow: only the reported full phrases at the very end.
     // Ignore case, spacing and punctuation, but never remove it mid-sentence
     // or blacklist ordinary words such as "канал" or "подписывайтесь".
     private static let promotionalTail = try! NSRegularExpression(
-        pattern: #"(?<![\p{L}\p{N}])["«“„]?подписывайтесь[\s\p{P}]+на[\s\p{P}]+наш[\s\p{P}]+канал[\s\p{P}]+ставьте[\s\p{P}]+лайки[\s\p{P}]+(?:и[\s\p{P}]+)?подписывайтесь[\s\p{P}]+на[\s\p{P}]+наш[\s\p{P}]+канал[\s\p{P}]*\z"#,
+        pattern: #"(?<![\p{L}\p{N}])["«“„]?подписывайтесь[\s\p{P}]+на[\s\p{P}]+наш[\s\p{P}]+канал[\s\p{P}]+ставьте[\s\p{P}]+лайки[\s\p{P}]+(?:и[\s\p{P}]+)?(?:подписывайтесь[\s\p{P}]+на[\s\p{P}]+наш[\s\p{P}]+канал|пишите[\s\p{P}]+комментарии)[\s\p{P}]*\z"#,
         options: [.caseInsensitive]
     )
 
